@@ -9,7 +9,7 @@ from spacenews import pull_from_spacenews
 from supercluster import pull_from_supercluster
 from twitter import pull_from_twitter
 from vestaboard import push_to_vestaboard
-from git import Repo
+# from git import Repo
 
 load_dotenv()
 

@@ -51,7 +51,7 @@ def format_message_for_grid(content, line_lengths, max_lines=5):
 
 def format_twitter_message(message):
     print(message)
-    content = " ".join(format_message_for_grid(message["content"], line_lengths=[22, 22, 22, 22, 22]))
+    content = " ".join(format_message_for_grid('"' + message["content"], line_lengths=[22, 22, 22, 22, 21])) + '"'
     author = message["user"]
     if len(author) > 22:
         author = author[:22 - 3] + "..."
@@ -186,7 +186,6 @@ def create_vestaboard_message(title):
 def push_to_vestaboard(message, source: str):
     if source == "twitter":
         vba_data = format_twitter_message(message=message)
-        print(json.dumps(vba_data))
     elif source == "aidy":
         vba_data = format_rest_message(message=message, color=64)
     elif source == "supercluster":
@@ -194,7 +193,7 @@ def push_to_vestaboard(message, source: str):
     elif source == "spacenews":
         vba_data = format_rest_message(message=message, color=63)
 
-        print(json.dumps(vba_data))
+    print(json.dumps(vba_data))
     # return
     try:
         layout_response = requests.post('https://vbml.vestaboard.com/compose', headers=headers, json=vba_data)

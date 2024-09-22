@@ -50,7 +50,7 @@ async def pull_from_twitter(already_pushed: List[int]):
             logging.info(f"Fetching data for Twitter user: {user}")
             # user_data = await client.get_user_by_screen_name(screen_name=user)
             # user_tweets = await client.get_user_tweets(user_id=user_data.id, count=10)
-            user_tweets = await client.search_tweet(query=f"from:{user}", product="Latest", count=10)
+            user_tweets = await client.search_tweet(query=f"from:{user} -filter:replies", product="Latest", count=10)
 
             logging.info(f"Retrieved {len(user_tweets)} tweets for user: {user}")
 

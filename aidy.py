@@ -47,7 +47,7 @@ def pull_from_aidy(already_pushed: list[int]) -> List[str]:
             print(actions)
             actions.sort(key=lambda x: datetime.strptime(x['actionDate'], '%Y-%m-%d'))
 
-            message = f"{space_bill['bill_type']} {space_bill['bill_number']} {actions[0]['actionCode'].split(' ')[0] if actions[0]['actionCode'] else ''} : {space_bill['title']}"
+            message = f"{space_bill['bill_type']} {space_bill['bill_number']}{(' ' + actions[0]['actionCode'].split(' ')[0]) if actions[0]['actionCode'] else ''}: {space_bill['title']}"
             aidy_queue.append(message)
             already_pushed.append(space_bill['id'])
         logging.info(f"Number of new bills added to the queue: {len(aidy_queue)}")

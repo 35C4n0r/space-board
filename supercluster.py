@@ -19,6 +19,7 @@ TODAY_DATE = datetime.utcnow().strftime("%Y-%m-%d")
 def pull_from_supercluster(already_pushed: List[str]):
     logging.info("Starting pull from Supercluster")
     query = f'\n*[\n  _type == "launch"\n  && !(_id in path("drafts.**"))\n  && launchInfo.launchDate.utc match "{TODAY_DATE}*"\n] | order(launchInfo.launchDate.utc desc) {{\n  ...\n}}\n'
+    # query = f'\n*[\n  _type == "launch"\n  && !(_id in path("drafts.**"))\n  && launchInfo.launchDate.utc match "2024*"\n] | order(launchInfo.launchDate.utc desc) {{\n  ...\n}}\n'
     params = {'query': query}
     supercluster_queue = []
 
@@ -35,7 +36,7 @@ def pull_from_supercluster(already_pushed: List[str]):
                 logging.info(f"Skipping already pushed launch with ID: {launch['_id']}")
                 continue
             logging.info(f"Adding launch with headline: {launch['headline']}")
-            supercluster_queue.append(f"{launch['launchInfo']['launchDescription']}")
+            supercluster_queue.append(f"{launch['headline']}")
             already_pushed.append(launch["_id"])
 
         logging.info(f"Number of launches added to the queue: {len(supercluster_queue)}")

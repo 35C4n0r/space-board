@@ -22,24 +22,25 @@ date_format = "%a %b %d %H:%M:%S %z %Y"
 # Initialize client
 client = Client('en-US')
 
-# cookie = {
-#     'guest_id': 'v1%3A171587249500383020',
-#     'night_mode': '2',
-#     'guest_id_marketing': 'v1%3A171587249500383020',
-#     'guest_id_ads': 'v1%3A171587249500383020',
-#     'gt': '1837509930200584217',
-#     'g_state': '{"i_l":0}',
-#     'kdt': 'Wkjutsm01gIzfuX3h7JhIPcbjxpww956JfFe2AfF',
-#     'auth_token': os.getenv('TWITTER_AUTH_TOKEN'),
-#     'ct0': '7df6f55a48de944f41329d2dc076ab3426fa20c700fe620198d3c85b60d015112900d1b65d39047cd5fa42e3396f66a109a4681f9ce74f321d6c6ad150d8b447ca660436f58e26949c0ef81bd453d199',
-#     'att': '1-osXpqqB177IoiTeiHq0q2961A0wACZYNR1VnNvZM',
-#     'lang': 'en',
-#     'twid': 'u%3D1757693804226781186',
-#     'personalization_id': '"v1_5DUo7SIttTtK0IxUFpvxwA=="',
-# }
+# Paste you cookies here
+cookie = {
+    'guest_id': 'v1%3A171587249500383020',
+    'night_mode': '2',
+    'guest_id_marketing': 'v1%3A171587249500383020',
+    'guest_id_ads': 'v1%3A171587249500383020',
+    'gt': '1837509930200584217',
+    'g_state': '{"i_l":0}',
+    'kdt': 'Wkjutsm01gIzfuX3h7JhIPcbjxpww956JfFe2AfF',
+    'auth_token': os.getenv('TWITTER_AUTH_TOKEN'),
+    'ct0': '7df6f55a48de944f41329d2dc076ab3426fa20c700fe620198d3c85b60d015112900d1b65d39047cd5fa42e3396f66a109a4681f9ce74f321d6c6ad150d8b447ca660436f58e26949c0ef81bd453d199',
+    'att': '1-osXpqqB177IoiTeiHq0q2961A0wACZYNR1VnNvZM',
+    'lang': 'en',
+    'twid': 'u%3D1757693804226781186',
+    'personalization_id': '"v1_5DUo7SIttTtK0IxUFpvxwA=="',
+}
 
-# client.set_cookies(cookie)
-client.load_cookies("./cookies.json")
+client.set_cookies(cookie)
+# client.load_cookies("./cookies.json")
 
 
 async def pull_from_twitter(already_pushed: List[int]):

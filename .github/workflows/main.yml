@@ -1,13 +1,9 @@
 name: update-vestaboard
 
 on:
-  # Allows manual trigger of the workflow from the Actions tab
-  workflow_dispatch:
-
-  # Run the workflow when code is pushed to a specific branch
-  push:
-    branches:
-      - feat-integrations-re # Replace with the name of the branch you want, e.g., 'develop'
+  # Schedule the workflow to run every 10 minutes
+  schedule:
+    - cron: '*/10 * * * *'
 
 jobs:
   update-vestaboard:
@@ -19,6 +15,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Set up Python
         uses: actions/setup-python@v3

@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: '*/10 * * * *'
 
+  push:
+    branches:
+      - feat-integrations-re # Replace with the name of the branch you want, e.g., 'develop'
+      - main
+
 jobs:
   update-vestaboard:
     runs-on: ubuntu-latest

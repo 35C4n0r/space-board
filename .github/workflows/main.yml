@@ -1,6 +1,9 @@
 name: update-vestaboard
 
 on:
+  # Allows manual trigger of the workflow from the Actions tab
+  workflow_dispatch:
+
   # Schedule the workflow to run every 10 minutes
   schedule:
     - cron: '*/10 * * * *'

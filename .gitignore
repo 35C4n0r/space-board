@@ -1,4 +1,1 @@
-.venv
-.env
-.idea
-__pycache__
+permit/generated/conditionset_rules/
